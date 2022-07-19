@@ -11,7 +11,7 @@ router.get("", async (req, res) => {
         success: false,
         data: null
     }
-    
+
     try {
         await redis.connect();
 
@@ -19,7 +19,7 @@ router.get("", async (req, res) => {
         console.log("typeof(redis.exists(key)):", typeof(redis.exists(key)));
 
         if (await redis.exists(key)) {
-            result.data = await redis.hGetAll(key, 0, -1);
+            result.data = await redis.hGetAll(key);
             console.log("result.data:", result.data);
             console.log("typeof(result.data):", typeof(result.data));
         }
@@ -83,7 +83,7 @@ router.post("", async (req, res) => {
         success: false,
         data: null
     }
-    
+
     try {
         await redis.connect();
 
@@ -124,7 +124,7 @@ router.put("", async (req, res) => {
         success: false,
         data: null
     }
-    
+
     try {
         await redis.connect();
 
